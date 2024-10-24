@@ -1,0 +1,5 @@
+# Usage example:
+#
+#   docker-compose up
+#
+version: '3.1'
