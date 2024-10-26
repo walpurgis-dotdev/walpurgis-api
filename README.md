@@ -29,3 +29,4 @@ So you want to contribute to Walpurgis API and make an impact, we are glad to he
 Before you proceed we have a few guidelines for contribution that will make everything much easier.
 We would appreciate if you dedicate the time and read them carefully:
 <!-- [url...] -->
+<!-- config: ormconfig.js | jest.config.js | .graphqlconfig -->

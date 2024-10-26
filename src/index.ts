@@ -1,17 +1,23 @@
-require('dotenv').config()
-import fastify from 'fastify';
+import fastify, { FastifyRequest, FastifyInstance } from 'fastify';
+import fastifyRawBody from 'fastify-raw-body';
+import { loggerConfig } from './logger';
+import routes from './routes';
 
-const port:any = process.env.PORT || 3000;
-const app = fastify({ logger: true });
+export default async function app(): Promise<FastifyInstance> {
+  const app = fastify({
+    logger: loggerConfig,
+    disableRequestLogging: true,
+    trustProxy: true,
+  });
 
-app.get('/', async (req, res) => {
-  return "I've been thinking about you a lot lately, and I'vee realized that I have feelings for you that go beyond friendship!\n";
-});
+  app.register(fastifyRawBody, {
+    field: 'rawBody',
+    global: false,
+    encoding: 'utf8',
+    runFirst: true,
+  });
 
-app.listen({ port: port }, (err, address) => {
-  if (err) {
-    console.error(err);
-    process.exit(1);
-  }
-  console.log(`The place my heart longs for ${address}`);
-});
+  app.register(routes, { prefix: '/' });
+
+  return app;
+}
