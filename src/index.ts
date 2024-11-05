@@ -1,15 +1,27 @@
-import fastify from 'fastify';
+import 'reflect-metadata';
+import fastify, { FastifyInstance } from 'fastify';
+import fastifyRawBody from 'fastify-raw-body';
+import { loggerConfig } from './logger';
+import routes from './routes';
+import createOrGetConnection from './db';
 
-const app = fastify({ logger: true });
+export default async function app(): Promise<FastifyInstance> {
+  await createOrGetConnection();
 
-app.get('/', async (req, res) => {
-  return "I've been thinking about you a lot lately, and I'vee realized that I have feelings for you that go beyond friendship!\n";
-});
+  const app = fastify({
+    logger: loggerConfig,
+    disableRequestLogging: true,
+    trustProxy: true,
+  });
 
-app.listen({ port: 3000 }, (err, address) => {
-  if (err) {
-    console.error(err);
-    process.exit(1);
-  }
-  console.log(`The place my heart longs for ${address}`);
-});
+  app.register(fastifyRawBody, {
+    field: 'rawBody',
+    global: false,
+    encoding: 'utf8',
+    runFirst: true,
+  });
+
+  app.register(routes, { prefix: '/' });
+
+  return app;
+}

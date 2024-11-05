@@ -4,5 +4,7 @@ node_modules/
 build/
 tmp/
 temp/
+.env.development
+.env.production
 coverage
 .DS_Store

@@ -2,21 +2,34 @@
   "name": "walpurgis-api",
   "private": true,
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "prebuild": "rm -rf build",
+    "build": "tsc",
+    "cli": "node bin/cli",
+    "dev": "nodemon ./bin/cli api | pino-pretty --messageKey message --levelKey severity",
+    "lint": "eslint . --ext .js,.ts --max-warnings 0",
+    "start": "npm run cli -- api",
+    "typeorm": "typeorm-ts-node-commonjs"
   },
   "dependencies": {
-    "fastify": "^5.1.0"
+    "fastify": "^5.1.0",
+    "fastify-raw-body": "^5.0.0",
+    "pg": "^8.13.1",
+    "pino": "^9.5.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20"
   },
   "devDependencies": {
     "@swc/core": "^1.8.0",
     "@types/node": "^22.9.0",
     "@typescript-eslint/eslint-plugin": "^8.13.0",
     "@typescript-eslint/parser": "^8.13.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest-extended": "^2.4.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "nodemon": "^3.1.7",
     "pino-pretty": "^11.3.0",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
