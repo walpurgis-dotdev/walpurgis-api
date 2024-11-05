@@ -1,6 +1,8 @@
 .idea/
-.vscode/
+.garden/
 node_modules/
 build/
 tmp/
 temp/
+coverage
+.DS_Store

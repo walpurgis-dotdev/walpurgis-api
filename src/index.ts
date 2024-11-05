@@ -1,8 +1,8 @@
-import fastify from "fastify";
+import fastify from 'fastify';
 
 const app = fastify({ logger: true });
 
-app.get("/", async (req, res) => {
+app.get('/', async (req, res) => {
   return "I've been thinking about you a lot lately, and I'vee realized that I have feelings for you that go beyond friendship!\n";
 });
 
