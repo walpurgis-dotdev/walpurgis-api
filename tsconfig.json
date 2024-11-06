@@ -16,5 +16,5 @@
   "ts-node": {
     "swc": true
   },
-  "include": ["src/**/*.ts"]
+  "include": ["bin/**/*.ts", "src/**/*.ts"]
 }

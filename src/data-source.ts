@@ -13,13 +13,6 @@ export const AppDataSource = new DataSource({
   entities: ['src/entity/**/*.{js,ts}'],
   migrations: ['src/migration/**/*.{js,ts}'],
   subscribers: ['src/subscriber/**/*.{js,ts}'],
-
-  // synchronize: false,
-  // extra: {
-  //   max: 30,
-  //   idleTimeoutMillis: 0,
-  // },
-
   replication: {
     defaultMode: 'master',
     master: {

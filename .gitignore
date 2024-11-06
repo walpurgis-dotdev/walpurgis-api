@@ -6,5 +6,7 @@ tmp/
 temp/
 .env.development
 .env.production
+bin/local.sh
+bin/prod.sh
 coverage
 .DS_Store
