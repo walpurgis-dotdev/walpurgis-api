@@ -18,6 +18,7 @@
     "lint": "eslint . --ext .js,.ts --max-warnings 0",
     "start": "npm run cli -- api",
     "pretest": "npm run lint && cross-env NODE_ENV=test npm run db:migrate:reset",
+    "test": "jest --testEnvironment=node --runInBand",
     "typeorm": "typeorm-ts-node-commonjs"
   },
   "dependencies": {
@@ -30,7 +31,9 @@
   },
   "devDependencies": {
     "@swc/core": "^1.8.0",
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.9.0",
+    "@types/supertest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^8.13.0",
     "@typescript-eslint/parser": "^8.13.0",
     "cross-env": "^7.0.3",
@@ -39,9 +42,13 @@
     "eslint-plugin-jest-extended": "^2.4.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "jest": "^29.7.0",
+    "jest-extended": "^4.0.2",
+    "nock": "^13.5.5",
     "nodemon": "^3.1.7",
     "pino-pretty": "^11.3.0",
     "prettier": "^3.3.3",
+    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   }

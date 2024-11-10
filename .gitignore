@@ -4,6 +4,7 @@ node_modules/
 build/
 tmp/
 temp/
+guides/
 .env.development
 .env.production
 bin/local.sh
